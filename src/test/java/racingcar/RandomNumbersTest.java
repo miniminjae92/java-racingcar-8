@@ -1,0 +1,43 @@
+package racingcar;
+
+import org.junit.jupiter.api.Disabled;
+import org.junit.jupiter.api.RepeatedTest;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
+
+import java.util.List;
+
+import static org.assertj.core.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.*;
+
+// 0~9 사이의 숫자만 생성이 되는지
+// size만큼만 숫자를 생성하는지
+class RandomNumbersTest {
+
+    @RepeatedTest(1000)
+    void 주어진_범위와_사이즈만큼의_숫자를_생성한다() {
+        RandomNumbers rn = new RandomNumbers();
+
+        List<Integer> result = rn.generateRandomNumbers(1000);
+
+        assertThat(result).allMatch(n -> n >= 0 && n <= 9);
+        assertThat(result).hasSize(1000);
+    }
+
+    @Test
+    void 사이즈가_0이_들어올경우_빈리스트를_반환한다() {
+        RandomNumbers rn = new RandomNumbers();
+
+        List<Integer> result = rn.generateRandomNumbers(0);
+
+        assertThat(result).isEqualTo(List.of());
+    }
+
+    @Test
+    void 사이즈가_0보다_작은_수가_들어올경우_예외발생한다() {
+        RandomNumbers rn = new RandomNumbers();
+
+        assertThatIllegalArgumentException().isThrownBy(()->rn.generateRandomNumbers(-1));
+    }
+}
