@@ -24,6 +24,21 @@ public class Cars {
         }
     }
 
+    public List<String> getWinnerNames() {
+        int maxPosition = cars.stream()
+                .mapToInt(Car::getPosition)
+                .max()
+                .orElse(0);
+        return cars.stream()
+                .filter(car -> car.getPosition() == maxPosition)
+                .map(Car::getName)
+                .toList();
+    }
+
+    public int getSize() {
+        return cars.size();
+    }
+
     private void validateDuplicates(List<String> carNames) {
         Set<String> uniqueNames = new HashSet<>(carNames);
         if (uniqueNames.size() != carNames.size()) {
