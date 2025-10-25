@@ -1,15 +1,11 @@
-package racingcar;
+package racingcar.domain;
 
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.RepeatedTest;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.params.ParameterizedTest;
-import org.junit.jupiter.params.provider.ValueSource;
 
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.*;
-import static org.junit.jupiter.api.Assertions.*;
 
 // 0~9 사이의 숫자만 생성이 되는지
 // size만큼만 숫자를 생성하는지
