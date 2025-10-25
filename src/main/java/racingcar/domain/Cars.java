@@ -1,15 +1,8 @@
 package racingcar.domain;
 
-import java.util.Collections;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 
-// Car 객체를 생성한다.
-// 무작위 값을 받아서 객체마다 전달한다.
-// 중복된 이름에 대해서 검사한다.
-public class Cars {
-
+public class Cars implements Iterable<Car> {
 
     private final List<Car> cars;
 
@@ -39,8 +32,9 @@ public class Cars {
         return cars.size();
     }
 
-    public List<Car> getCars() {
-        return cars;
+    @Override
+    public Iterator<Car> iterator() {
+        return Collections.unmodifiableList(cars).iterator();
     }
 
     private void validateDuplicates(List<String> carNames) {

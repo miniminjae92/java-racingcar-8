@@ -10,7 +10,7 @@ public class OutputView {
     public void printRound(Cars cars) {
         System.out.println();
         System.out.println("실행결과");
-        for (Car car : cars.getCars()) {
+        for (Car car : cars) {
             System.out.println(car.getName() + " : " + "-".repeat(car.getPosition()));
         }
     }
