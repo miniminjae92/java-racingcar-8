@@ -20,10 +20,10 @@ public class InputView {
     }
 
     private String validateString(String input) {
-       if (input.isEmpty()) {
-           throw new IllegalArgumentException("입력은 null이 될 수 없습니다.");
-       }
-       return input;
+        if (input.isEmpty()) {
+            throw new IllegalArgumentException("입력은 null이 될 수 없습니다.");
+        }
+        return input;
     }
 
     private List<String> separateComma(String input) {
@@ -32,10 +32,14 @@ public class InputView {
     }
 
     private int validateCounts(String input) {
-       int count = Integer.parseInt(input);
-       if (count <= 0) {
-          throw new IllegalArgumentException("시도할 횟수는 0보다 커야합니다.");
-       }
-       return count;
+        try {
+            int count = Integer.parseInt(input);
+            if (count <= 0) {
+                throw new IllegalArgumentException("시도할 횟수는 0보다 커야합니다.");
+            }
+            return count;
+        } catch (NumberFormatException e) {
+            throw new IllegalArgumentException("시도할 횟수는 숫자여야 합니다.");
+        }
     }
 }

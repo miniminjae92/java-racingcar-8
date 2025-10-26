@@ -25,6 +25,7 @@ public class GameController {
         int rounds = inputView.readRoundCounts();
         Cars cars = new Cars(carNames);
         RacingGame racingGame = new RacingGame(cars, randomNumbers);
+        outputView.printResultMessage();
         for (int i = 0; i < rounds; i++) {
             racingGame.runOneRound();
             outputView.printRound(cars);
