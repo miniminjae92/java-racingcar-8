@@ -28,9 +28,6 @@ public class InputView {
 
     private List<String> separateComma(String input) {
         List<String> seperated = List.of(input.split(","));
-        if (seperated.size() <= 0) {
-            throw new IllegalArgumentException("자동차의 수는 음수 " + seperated.size() + "가 될 수 없습니다.");
-        }
         return seperated.stream().map(String::trim).toList();
     }
 
