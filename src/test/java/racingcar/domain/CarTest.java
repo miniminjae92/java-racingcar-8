@@ -8,15 +8,15 @@ import static org.assertj.core.api.Assertions.assertThatIllegalArgumentException
 
 public class CarTest {
     @ParameterizedTest
-    @ValueSource(strings = {"test", "test1", "1", "a", "한글", "한글a1"})
+    @ValueSource(strings = {"test", "test1", "1", "a", "한글", "한글a1", "       test"})
     void 올바른_이름을_가진다(String carName) {
         Car car = new Car(carName);
 
-        assertThat(carName).isEqualTo(car.getName());
+        assertThat(carName.trim()).isEqualTo(car.getName());
     }
 
     @ParameterizedTest
-    @ValueSource(strings = {"testtt", "", "        ", "         test", "!", "test@"})
+    @ValueSource(strings = {"testtt", "", "        ", "!", "test@"})
     void 유효하지않은_이름을_가진다(String carName) {
         assertThatIllegalArgumentException().isThrownBy(() -> new Car(carName));
     }

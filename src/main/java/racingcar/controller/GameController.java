@@ -21,16 +21,12 @@ public class GameController {
     }
 
     public void run() {
-        try {
-            Cars cars = new Cars(inputView.readCarNames());
-            RacingGame racingGame = new RacingGame(cars, randomNumbers);
-            int rounds = inputView.readRoundCounts();
+        Cars cars = new Cars(inputView.readCarNames());
+        int rounds = inputView.readRoundCounts();
+        RacingGame racingGame = new RacingGame(cars, randomNumbers);
 
-            playGame(racingGame, cars, rounds);
-            showResult(racingGame);
-        } catch (IllegalArgumentException e) {
-            outputView.printError(e.getMessage());
-        }
+        playGame(racingGame, cars, rounds);
+        showResult(racingGame);
     }
 
     private void playGame(RacingGame racingGame, Cars cars, int rounds) {
