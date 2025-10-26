@@ -23,4 +23,8 @@ public class OutputView {
         String result = String.join(",", winners);
         System.out.println("최종 우승자 : " + result);
     }
+
+    public void printError(String message) {
+        System.err.println("[ERROR] " + message);
+    }
 }
