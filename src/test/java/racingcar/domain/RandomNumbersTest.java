@@ -7,8 +7,6 @@ import java.util.List;
 
 import static org.assertj.core.api.Assertions.*;
 
-// 0~9 사이의 숫자만 생성이 되는지
-// size만큼만 숫자를 생성하는지
 class RandomNumbersTest {
 
     @RepeatedTest(1000)
@@ -27,13 +25,13 @@ class RandomNumbersTest {
 
         List<Integer> result = rn.generateRandomNumbers(0);
 
-        assertThat(result).isEqualTo(List.of());
+        assertThat(result).isEmpty();
     }
 
     @Test
     void 사이즈가_0보다_작은_수가_들어올경우_예외발생한다() {
         RandomNumbers rn = new RandomNumbers();
 
-        assertThatIllegalArgumentException().isThrownBy(()->rn.generateRandomNumbers(-1));
+        assertThatIllegalArgumentException().isThrownBy(() -> rn.generateRandomNumbers(-1));
     }
 }
